@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fitnessapp="http://schemas.android.com/apk/res-auto">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/workoutsRecyclerView"
+        android:layout_width="418dp"
+        android:layout_height="654dp"
+        android:clipToPadding="false"
+        android:overScrollMode="ifContentScrolls"
+        android:padding="8dp"
+        android:scrollbars="vertical"
+        android:textAlignment="center"
+        fitnessapp:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        fitnessapp:layout_constraintBottom_toBottomOf="parent"
+        fitnessapp:layout_constraintEnd_toEndOf="parent"
+        fitnessapp:layout_constraintHorizontal_bias="0.571"
+        fitnessapp:layout_constraintStart_toStartOf="parent"
+        fitnessapp:layout_constraintTop_toTopOf="parent"
+        fitnessapp:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

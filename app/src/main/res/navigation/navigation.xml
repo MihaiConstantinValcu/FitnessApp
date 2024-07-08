@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@+id/navigation_profile">
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.fitnessapp.fragments.profile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/navigation_workouts"
+        android:name="com.example.fitnessapp.fragments.workouts.WorkoutsFragment"
+        android:label="Workouts"
+        tools:layout="@layout/fragment_workouts" />
+
+    <fragment
+        android:id="@+id/navigation_add_workout"
+        android:name="com.example.fitnessapp.fragments.add_workout.AddWorkoutFragment"
+        android:label="Add Workout"
+        tools:layout="@layout/fragment_workouts" />
+
+    <fragment
+        android:id="@+id/navigation_statistics"
+        android:name="com.example.fitnessapp.fragments.statistics.StatisticsFragment"
+        android:label="Statistics"
+        tools:layout="@layout/fragment_statistics" />
+
+</navigation>
