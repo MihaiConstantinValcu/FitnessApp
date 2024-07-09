@@ -45,7 +45,7 @@ class StatisticsFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
 
         val existingEmail = auth.currentUser?.email
-        val user = existingEmail?.let { userDao.getUser(it) }
+        val user = existingEmail?.let { userDao.getUserByEmail(it) }
         if (user == null || user.sport.isEmpty() || user.city.isEmpty()){
             errorMessageTextView.text = "Please complete your profile first!"
             errorMessageTextView.visibility = View.VISIBLE

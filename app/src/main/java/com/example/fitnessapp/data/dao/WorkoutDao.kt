@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import com.example.fitnessapp.models.WorkoutModel
+import java.time.LocalDate
 
 @Dao
 public interface WorkoutDao {
@@ -16,4 +17,7 @@ public interface WorkoutDao {
 
     @Query("SELECT * FROM workout WHERE userEmail = :userEmail")
     fun getAllWorkoutsByUserEmail(userEmail: String): List<WorkoutModel>
+
+    @Query("SELECT * FROM workout WHERE date = :date and duration = :duration")
+    fun getAllWorkoutsByDateAndDuration(date: LocalDate, duration: Int): List<WorkoutModel>
 }

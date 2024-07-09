@@ -6,7 +6,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.example.fitnessapp.models.UserModel
-import com.firebase.ui.auth.data.model.User
 
 @Dao
 public interface UserDao {
@@ -17,7 +16,7 @@ public interface UserDao {
     fun  updateUser(model: UserModel)
 
     @Query("SELECT * from user WHERE email = :email")
-    fun getUser(email: String): UserModel?
+    fun getUserByEmail(email: String): UserModel?
 
     @Query("SELECT COUNT(*) from user")
     fun getUserCount(): Int

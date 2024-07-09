@@ -1,6 +1,5 @@
 package com.example.fitnessapp.fragments.profile
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,18 +9,13 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import com.example.fitnessapp.ApplicationController
 import com.example.fitnessapp.AuthActivity
 import com.example.fitnessapp.R
 import com.example.fitnessapp.data.AppDatabase
 import com.example.fitnessapp.data.dao.UserDao
 import com.example.fitnessapp.models.UserModel
-import com.firebase.ui.auth.data.model.User
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class ProfileFragment : Fragment() {
 
@@ -94,7 +88,7 @@ class ProfileFragment : Fragment() {
         val userProfile = UserModel(username = username, email = email, city = city, sport = sport)
 
         val existingEmail = auth.currentUser?.email
-        val existingUser = existingEmail?.let { userDao.getUser(it) }
+        val existingUser = existingEmail?.let { userDao.getUserByEmail(it) }
         if (existingUser != null) {
             userProfile.id = existingUser.id
             userDao.updateUser(userProfile)
@@ -107,11 +101,14 @@ class ProfileFragment : Fragment() {
 
     private fun loadUserProfile() {
         val existingEmail = auth.currentUser?.email
-        val userProfile = existingEmail?.let { userDao.getUser(it) }
+        val userProfile = existingEmail?.let { userDao.getUserByEmail(it) }
 
         if(userProfile == null){
-            val userProfile = UserModel(username = "", email = "", city = "", sport = "")
-            userDao.insertUser(userProfile)
+            val userProfile =
+                existingEmail?.let { UserModel(username = "", email = it, city = "", sport = "") }
+            if (userProfile != null) {
+                userDao.insertUser(userProfile)
+            }
         }
 
         userProfile?.let {

@@ -7,8 +7,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/workoutsRecyclerView"
-        android:layout_width="418dp"
-        android:layout_height="654dp"
+        android:layout_width="408dp"
+        android:layout_height="502dp"
         android:clipToPadding="false"
         android:overScrollMode="ifContentScrolls"
         android:padding="8dp"
@@ -21,5 +21,40 @@
         fitnessapp:layout_constraintStart_toStartOf="parent"
         fitnessapp:layout_constraintTop_toTopOf="parent"
         fitnessapp:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/syncButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sync Workouts"
+        fitnessapp:layout_constraintBottom_toBottomOf="parent"
+        fitnessapp:layout_constraintEnd_toEndOf="parent"
+        fitnessapp:layout_constraintHorizontal_bias="0.498"
+        fitnessapp:layout_constraintStart_toStartOf="parent"
+        fitnessapp:layout_constraintTop_toTopOf="@+id/workoutsRecyclerView"
+        fitnessapp:layout_constraintVertical_bias="0.808" />
+
+    <TextView
+        android:id="@+id/messageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:gravity="center"
+        fitnessapp:layout_constraintBottom_toBottomOf="parent"
+        fitnessapp:layout_constraintEnd_toEndOf="parent"
+        fitnessapp:layout_constraintStart_toStartOf="parent"
+        fitnessapp:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/syncMessageTextView"
+        android:layout_width="164dp"
+        android:layout_height="35dp"
+        android:visibility="invisible"
+        fitnessapp:layout_constraintBottom_toBottomOf="parent"
+        fitnessapp:layout_constraintEnd_toEndOf="parent"
+        fitnessapp:layout_constraintHorizontal_bias="0.497"
+        fitnessapp:layout_constraintStart_toStartOf="parent"
+        fitnessapp:layout_constraintTop_toTopOf="@+id/workoutsRecyclerView"
+        fitnessapp:layout_constraintVertical_bias="0.739" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

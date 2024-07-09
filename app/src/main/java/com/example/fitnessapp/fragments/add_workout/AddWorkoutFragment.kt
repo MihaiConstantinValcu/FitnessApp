@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.example.fitnessapp.ApplicationController
 import com.example.fitnessapp.R
 import com.example.fitnessapp.data.AppDatabase
+import com.example.fitnessapp.data.dao.UserDao
 import com.example.fitnessapp.models.WorkoutModel
 import com.google.firebase.auth.FirebaseAuth
 import java.time.LocalDate
@@ -23,6 +24,8 @@ class AddWorkoutFragment : Fragment() {
     private lateinit var database: AppDatabase
     private lateinit var errorMessageTextView: TextView
     private lateinit var auth: FirebaseAuth
+    private lateinit var userDao: UserDao
+    private lateinit var noSportTextView: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,11 +35,24 @@ class AddWorkoutFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_add_workout, container, false)
 
         database = (requireActivity().application as ApplicationController).database
+        userDao = database.userDao()
         auth = FirebaseAuth.getInstance()
         dateEditText = view.findViewById(R.id.dateEditText)
         durationEditText = view.findViewById(R.id.durationEditText)
         saveButton = view.findViewById(R.id.saveButton)
         errorMessageTextView = view.findViewById(R.id.errorMessage)
+        noSportTextView = view.findViewById(R.id.noSportTextView)
+
+        val existingEmail = auth.currentUser?.email
+        val user = userDao.getUserByEmail(existingEmail!!)
+        if(user!!.sport.isEmpty()){
+            profileNotCompleted("Please add your sport in your profile")
+            return view
+        }
+
+        dateEditText.visibility = View.VISIBLE
+        durationEditText.visibility = View.VISIBLE
+        saveButton.visibility = View.VISIBLE
 
         saveButton.setOnClickListener {
             saveWorkout()
@@ -86,6 +102,11 @@ class AddWorkoutFragment : Fragment() {
             text = message
             visibility = View.VISIBLE
         }
+    }
+
+    private fun profileNotCompleted(message: String){
+        noSportTextView.text = message
+        noSportTextView.visibility = View.VISIBLE
     }
 
 }

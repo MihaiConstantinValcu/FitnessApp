@@ -36,17 +36,16 @@
 
     <TextView
         android:id="@+id/errorMessage"
-        android:layout_width="252dp"
-        android:layout_height="23dp"
+        android:layout_width="295dp"
+        android:layout_height="67dp"
         android:gravity="center"
         android:text="TextView"
-        android:textSize="16sp"
+        android:textSize="24sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.066" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/usersNumberTextView"
